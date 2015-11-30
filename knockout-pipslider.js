@@ -52,7 +52,6 @@ ko.bindingHandlers.pipSlider = (function () {
                 store.value = observable;
                 defaults.value = ko.unwrap(observable);
             }
-            defaults.change = slide.bind(store);
             options = $.extend(defaults, options);
             ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
                 $(element).slider("pips", "destroy");
@@ -60,6 +59,7 @@ ko.bindingHandlers.pipSlider = (function () {
             });
             $(element).data('store', store);
             $(element).slider(options).slider('pips', $.extend(pipDefaults, pipOptions)).slider('float', floatOptions);
+            $(element).on('slide', slide.bind(store));
         },
         update: function (element, valueAccessor, allBindingsAccessor) {
             var options = allBindingsAccessor().sliderOptions || {};
@@ -76,10 +76,10 @@ ko.bindingHandlers.pipSlider = (function () {
                 store.value = observable;
                 defaults.value = ko.unwrap(observable);
             }
-            defaults.change = slide.bind(store);
             options = $.extend(defaults, options);
             $(element).data('store', store);
             $(element).slider(options).slider('pips', $.extend(pipDefaults, pipOptions)).slider('float', floatOptions);
+            $(element).on('slide', slide.bind(store));
         }
     };
 })();
