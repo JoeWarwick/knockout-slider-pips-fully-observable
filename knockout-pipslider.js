@@ -42,8 +42,8 @@ ko.bindingHandlers.pipSlider = (function () {
                 if (ko.isObservable(observable))
                     observable.subscribe(function () {
                         options.values = $.map(observable(), function (v) { return ko.unwrap(v); });
-                        var diff = ko.utils.arrayFilter(ko.utils.compareArrays($(element).slider('values'), options.values), function (d) { return d.status != 'retained'; });
-                        if (diff.length) {
+                        var diff = ko.utils.arrayFilter(ko.utils.compareArrays(observable(), store.values()), function (d) { return d.status != 'retained'; });
+                        if (diff.length || $(element).slider('values').length != store.values().length) {
                             $(element).slider("pips", "destroy");
                             $(element).slider("destroy");
                         }
