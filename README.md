@@ -1,5 +1,5 @@
 # knockout-slider-pips-fully-observable
-A bindinghandler for jquery slider + jquery slider pips. This binds to an observable / array of observables/ observable array of observables / observable array of non observables as the case may require.
+A bindinghandler for jquery slider + jquery slider pips. This binds to an observable / array of observables / observable array of observables / observable array of non observables as the case may require.
 
 Data-Bind attributes { pipSlider: <array / value / observable array>, sliderOptions: {<jquery slider options>}, pipOptions: {<tick and pip options>}, floatOptions: {<label and float options>}  }
 
