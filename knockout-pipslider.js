@@ -29,7 +29,7 @@ ko.bindingHandlers.pipSlider = (function () {
         };
     return {
         init: function (element, valueAccessor, allBindingsAccessor) {
-            options = allBindingsAccessor().sliderOptions || {};
+            var options = allBindingsAccessor().sliderOptions || {};
             var pipOptions = allBindingsAccessor().pipOptions || {};
             var floatOptions = allBindingsAccessor().floatOptions || {};
             var observable = valueAccessor();
