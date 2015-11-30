@@ -18,8 +18,8 @@ ko.bindingHandlers.pipSlider = (function () {
                 setValues(ui.values, this);
                 this.values.notifySubscribers();
             } else {
-                if (this.values) {
-                    this.values = setValues(ui.values, this);
+                if (this.values.splice) {
+                    setValues(ui.values, this);
                 } else if (ko.isObservable(this.value)) {
                     this.value(ui.values ? setValues(ui.values, this) : ui.value);
                 } else {
