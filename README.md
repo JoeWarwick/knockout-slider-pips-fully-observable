@@ -19,8 +19,10 @@ Example usage:
 - Using both means that the number of handles is two way databound and also each individual handle is two way databound.
 
 If it is desired to stop the slider handles from being able to pass over each other then the following function can be passed into the slider options.slide parameter.
+```code
     function (e, ui) {
         var idx = ui.values.indexOf(ui.value);
         if (idx == 0 || ui.value <= ui.values[idx - 1] || (idx !== ui.values.length - 1 && ui.value >= ui.values[idx + 1]))
             e.stopImmediatePropagation();
     };
+```
