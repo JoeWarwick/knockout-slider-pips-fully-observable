@@ -1,18 +1,18 @@
 ko.bindingHandlers.pipSlider = (function () {
     var setValues = function (array, store) {
-        $.each(array, function (i, o) {
-            if (ko.isObservable(store.values)) {
-                if (ko.isObservable(store.values()[i])) {
-                    if (store.values()[i]() !== o) store.values()[i](o);
-                } else store.values()[i] = o;
-            } else {
-                if (ko.isObservable(store.values[i])) {
-                    if (store.values[i]() !== o) store.values[i](o);
-                } else store.values[i] = o;
-            }
-        });
-        return array;
-    },
+            $.each(array, function (i, o) {
+                if (ko.isObservable(store.values)) {
+                    if (ko.isObservable(store.values()[i])) {
+                        if (store.values()[i]() !== o) store.values()[i](o);
+                    } else store.values()[i] = o;
+                } else {
+                    if (ko.isObservable(store.values[i])) {
+                        if (store.values[i]() !== o) store.values[i](o);
+                    } else store.values[i] = o;
+                }
+            });
+            return array;
+        },
         slide = function (e, ui) {
             if (ko.isObservable(this.values)) {
                 setValues(ui.values, this);
