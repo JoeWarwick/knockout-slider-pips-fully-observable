@@ -36,14 +36,14 @@ ko.bindingHandlers.pipSlider = (function () {
             var defaults = {};
             var pipDefaults = { rest: "label" };
             var store = $(element).data('store') || {};
-            if (observable.splice) {
+            if (observable.splice) { //is array
                 store.values = observable;
                 defaults.values = $.map(ko.unwrap(observable), ko.unwrap);
                 if (ko.isObservable(observable))
                     observable.subscribe(function (diff) {
                         options.values = $.map(observable(), ko.unwrap);
                         var diff = ko.utils.arrayFilter(ko.utils.compareArrays(observable(), store.values()), function (d) { return d.status != 'retained'; });
-                        if (diff.length || $(element).slider('values').length != store.values().length) {
+                        if (diff.length || $(element).slider('values').length != store.values().length) { // value count mismatch
                             $(element).slider("pips", "destroy");
                             $(element).slider("destroy");
                         }
