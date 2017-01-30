@@ -38,10 +38,10 @@ ko.bindingHandlers.pipSlider = (function () {
             var store = $(element).data('store') || {};
             if (observable.splice) {
                 store.values = observable;
-                defaults.values = $.map(ko.unwrap(observable), function (v) { return ko.unwrap(v); });
+                defaults.values = $.map(ko.unwrap(observable), ko.unwrap);
                 if (ko.isObservable(observable))
                     observable.subscribe(function (diff) {
-                        options.values = $.map(observable(), function (v) { return ko.unwrap(v); });
+                        options.values = $.map(observable(), ko.unwrap);
                         var diff = ko.utils.arrayFilter(ko.utils.compareArrays(observable(), store.values()), function (d) { return d.status != 'retained'; });
                         if (diff.length || $(element).slider('values').length != store.values().length) {
                             $(element).slider("pips", "destroy");
@@ -75,7 +75,7 @@ ko.bindingHandlers.pipSlider = (function () {
             var store = $(element).data('store') || {};
             if (observable.splice) {
                 store.values = observable;
-                defaults.values = $.map(ko.unwrap(observable), function (v) { return ko.unwrap(v); });
+                defaults.values = $.map(ko.unwrap(observable), ko.unwrap);
             } else {
                 store.value = observable;
                 defaults.value = ko.unwrap(observable);
